@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Pool TV — a one-man television universe created by Sean. Three seasons of the show, the games Pool TV: No Signal and Rockstar, and a secret third game in the works." />
+    <link rel="icon" href="data:," />
+    <title>Pool TV Official</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --black: #050505;
+        --panel: #0d0d0f;
+        --panel-2: #121215;
+        --red: #e01a2b;
+        --red-dark: #8f0f1c;
+        --red-hot: #ff2b3d;
+        --silver: #c9ccd4;
+        --silver-dim: #9aa0ab;
+        --white: #f5f5f7;
+        --line: #26262b;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--black);
+        color: var(--silver);
+        font-family: "Archivo", system-ui, sans-serif;
+        font-size: 1.05rem;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection { background: var(--red); color: #fff; }
+      img, video { max-width: 100%; display: block; }
+      a { color: var(--silver); }
+      button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) { min-height: 2rem; }
+
+      .wrap { max-width: 1180px; margin: 0 auto; padding: 0 1.25rem; }
+
+      /* ---------- Nav ---------- */
+      nav {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(5,5,5,.92);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav .wrap {
+        display: flex; align-items: center; gap: .25rem;
+        overflow-x: auto; scrollbar-width: none;
+      }
+      nav .wrap::-webkit-scrollbar { display: none; }
+      nav a {
+        flex: 0 0 auto;
+        display: inline-flex; align-items: center;
+        min-height: 3rem; padding: .5rem .8rem;
+        font-family: "Anton", sans-serif; font-size: .82rem;
+        letter-spacing: .14em; text-transform: uppercase;
+        color: var(--silver-dim); text-decoration: none;
+      }
+      nav a:hover, nav a:focus-visible { color: var(--white); }
+      nav a.fb { color: var(--red-hot); margin-left: auto; }
+      nav a.fb:hover { color: #fff; }
+
+      /* ---------- Hero ---------- */
+      .hero {
+        position: relative;
+        padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(3rem, 8vw, 5.5rem);
+        text-align: left;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: ""; position: absolute; inset: 0;
+        background:
+          radial-gradient(60% 50% at 78% 18%, rgba(224,26,43,.16), transparent 65%),
+          radial-gradient(45% 40% at 12% 85%, rgba(224,26,43,.08), transparent 60%);
+        pointer-events: none;
+      }
+      .hero .wrap { position: relative; }
+      .hero-kicker {
+        font-family: "Anton", sans-serif; letter-spacing: .3em;
+        font-size: .8rem; color: var(--red-hot); text-transform: uppercase;
+        margin: 0 0 1rem;
+      }
+      h1 {
+        font-family: "Anton", sans-serif;
+        font-size: clamp(4.2rem, 15vw, 11rem);
+        line-height: .92; margin: 0; color: var(--white);
+        text-transform: uppercase; letter-spacing: .01em;
+      }
+      h1 .tv { color: var(--red); }
+      .red-rule {
+        height: 4px; background: var(--red);
+        margin: 1.4rem 0 1.6rem; max-width: 560px;
+        box-shadow: 0 0 18px rgba(224,26,43,.55);
+      }
+      .catchphrase {
+        font-size: clamp(1.25rem, 3.4vw, 1.9rem);
+        font-weight: 600; color: var(--white); margin: 0 0 .6rem;
+      }
+      .catchphrase em { color: var(--red-hot); font-style: normal; }
+      .hero-sub { max-width: 620px; color: var(--silver); margin: 0 0 2.2rem; }
+      .hero-ctas { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
+      .btn {
+        display: inline-flex; align-items: center; gap: .55rem;
+        min-height: 3.25rem; padding: .8rem 1.6rem;
+        font-family: "Anton", sans-serif; font-size: 1rem;
+        letter-spacing: .1em; text-transform: uppercase;
+        text-decoration: none; border: 2px solid transparent;
+        transition: transform .15s ease, background .15s ease, color .15s ease;
+      }
+      .btn:active { transform: scale(.97); }
+      .btn-red { background: var(--red); color: #fff; box-shadow: 0 6px 24px rgba(224,26,43,.35); }
+      .btn-red:hover { background: var(--red-hot); }
+      .btn-ghost { border-color: #3a3a41; color: var(--white); background: transparent; }
+      .btn-ghost:hover { border-color: var(--silver); }
+      .dl-count { font-size: .95rem; color: var(--silver-dim); }
+      .dl-count strong { color: var(--white); font-size: 1.1rem; }
+
+      /* ---------- Sections ---------- */
+      section { padding: clamp(3rem, 8vw, 5.5rem) 0; }
+      section + section { border-top: 1px solid var(--line); }
+      .sec-head { margin-bottom: 2rem; }
+      .sec-head h2 {
+        font-family: "Anton", sans-serif; text-transform: uppercase;
+        font-size: clamp(2.1rem, 6vw, 3.4rem); line-height: 1.02;
+        color: var(--white); margin: 0;
+      }
+      .sec-head .red-rule { margin: 1rem 0 0; max-width: 220px; height: 3px; }
+      .lead { font-size: 1.15rem; max-width: 760px; }
+      p { margin: 0 0 1.1rem; }
+      .white { color: var(--white); }
+
+      .brush {
+        display: inline-block; position: relative; color: var(--white);
+        padding: 0 .35em; z-index: 0;
+      }
+      .brush::before {
+        content: ""; position: absolute; z-index: -1;
+        left: -.1em; right: -.1em; top: 8%; bottom: 6%;
+        background: var(--red);
+        clip-path: polygon(0 22%, 6% 8%, 18% 18%, 34% 4%, 52% 14%, 70% 2%, 86% 12%, 100% 6%, 98% 55%, 100% 88%, 84% 96%, 62% 88%, 44% 100%, 26% 90%, 10% 98%, 1% 86%);
+      }
+
+      /* ---------- Stat strip ---------- */
+      .stats {
+        display: grid; grid-template-columns: repeat(2, 1fr);
+        gap: 1px; background: var(--line);
+        border: 1px solid var(--line); margin-top: 2.4rem;
+      }
+      .stat { background: var(--panel); padding: 1.3rem 1.2rem; }
+      .stat b {
+        display: block; font-family: "Anton", sans-serif;
+        font-size: 2rem; color: var(--white); line-height: 1;
+      }
+      .stat b i { font-style: normal; color: var(--red); }
+      .stat span { font-size: .88rem; color: var(--silver-dim); text-transform: uppercase; letter-spacing: .08em; }
+      @media (min-width: 760px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+
+      /* ---------- Game ---------- */
+      .game-art {
+        width: 100%; height: auto; object-fit: contain;
+        border: 1px solid var(--line);
+        box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(224,26,43,.12);
+      }
+      .game-grid { display: grid; gap: 2rem; margin-top: 2.2rem; }
+      @media (min-width: 900px) { .game-grid { grid-template-columns: 1.15fr .85fr; align-items: start; } }
+      .specs { list-style: none; margin: 0 0 1.6rem; padding: 0; }
+      .specs li {
+        padding: .65rem 0; border-bottom: 1px solid var(--line);
+        display: flex; justify-content: space-between; gap: 1rem;
+      }
+      .specs li span:first-child { color: var(--silver-dim); text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; padding-top: .15rem; }
+      .specs li span:last-child { color: var(--white); font-weight: 600; text-align: right; }
+      .credit { color: var(--silver-dim); font-size: .95rem; margin-top: 1rem; }
+      figure { margin: 0; }
+      figcaption { color: var(--silver-dim); font-size: .9rem; padding-top: .6rem; }
+      .video-frame { border: 1px solid var(--line); background: #000; }
+      .video-frame video { width: 100%; height: auto; aspect-ratio: 16/9; object-fit: contain; }
+      .trailer-block { margin-top: 2.6rem; }
+      .trailer-block h3, .game-grid h3, .rockstar-grid h3 {
+        font-family: "Anton", sans-serif; text-transform: uppercase;
+        color: var(--white); font-size: 1.35rem; letter-spacing: .04em; margin: 0 0 .9rem;
+      }
+
+      /* ---------- Show ---------- */
+      .finale-card {
+        background: var(--panel); border: 1px solid var(--line);
+        border-top: 4px solid var(--red);
+        padding: 1.6rem; margin-top: 2rem;
+      }
+      .finale-card .tag {
+        font-family: "Anton", sans-serif; letter-spacing: .2em;
+        color: var(--red-hot); font-size: .78rem; text-transform: uppercase;
+      }
+      .finale-card h3 {
+        font-family: "Anton", sans-serif; color: var(--white);
+        font-size: clamp(1.7rem, 5vw, 2.5rem); text-transform: uppercase;
+        margin: .4rem 0 .5rem; line-height: 1.05;
+      }
+      .finale-card p { margin: 0; max-width: 640px; }
+
+      /* ---------- Game entries ---------- */
+      .game-title {
+        font-family: "Anton", sans-serif; text-transform: uppercase;
+        color: var(--white); font-size: clamp(1.9rem, 5vw, 2.7rem);
+        margin: 2.4rem 0 1.2rem; line-height: 1.05;
+      }
+      .game-block { margin-top: 3.8rem; border-top: 1px solid var(--line); padding-top: 2.4rem; }
+      .rockstar-grid { display: grid; gap: 2rem; }
+      @media (min-width: 900px) { .rockstar-grid { grid-template-columns: .85fr 1.15fr; align-items: start; } }
+      .rockstar-art {
+        border: 1px solid var(--line); background: var(--panel);
+        display: flex; align-items: center; justify-content: center;
+        padding: clamp(1.5rem, 5vw, 2.5rem);
+      }
+      .rockstar-art img { width: min(300px, 68vw); height: auto; }
+      .video-slot {
+        aspect-ratio: 16/9; border: 1px dashed #3d3d44; background: #000;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: .45rem; text-align: center; padding: 1rem; margin-top: 1.4rem;
+      }
+      .video-slot b {
+        font-family: "Anton", sans-serif; letter-spacing: .18em;
+        color: var(--white); text-transform: uppercase; font-size: 1.05rem;
+      }
+      .video-slot span { color: var(--silver-dim); font-size: .92rem; }
+
+      /* ---------- Secret game ---------- */
+      .secret-card {
+        background: var(--panel); border: 1px solid var(--line);
+        border-top: 4px solid var(--red);
+        padding: 1.8rem 1.6rem; max-width: 720px;
+      }
+      .secret-card .status {
+        font-family: "Anton", sans-serif; font-size: .75rem;
+        letter-spacing: .24em; color: var(--red-hot); text-transform: uppercase;
+      }
+      .secret-card p { margin: 0; max-width: 560px; }
+      .redact { display: flex; gap: .55rem; margin: 1.2rem 0 1.3rem; max-width: 440px; }
+      .redact i { display: block; height: 1.9rem; background: #000; border: 1px solid var(--line); flex: 1; }
+      .redact i:nth-child(2) { flex: .55; }
+
+      /* ---------- Wild nights ---------- */
+      .wild-grid { display: grid; gap: 1.4rem; }
+      @media (min-width: 760px) { .wild-grid { grid-template-columns: repeat(3, 1fr); } }
+      .wild { background: var(--panel); border: 1px solid var(--line); }
+      .wild img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; }
+      .wild figcaption {
+        padding: 1rem 1.1rem 1.2rem; color: var(--white);
+        font-weight: 600; font-size: 1rem;
+      }
+      .wild figcaption span { display: block; color: var(--silver-dim); font-weight: 400; font-size: .88rem; margin-top: .15rem; }
+
+      /* ---------- Footer ---------- */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 3rem 0 3.5rem; text-align: center;
+      }
+      footer .mark {
+        font-family: "Anton", sans-serif; font-size: 2rem;
+        color: var(--white); text-transform: uppercase; margin: 0 0 .3rem;
+      }
+      footer .mark span { color: var(--red); }
+      footer p { color: var(--silver-dim); margin: 0 0 .4rem; font-size: .95rem; }
+      footer a { color: var(--red-hot); text-decoration: none; font-weight: 600; }
+      footer a:hover { text-decoration: underline; }
+      footer .foot-links { margin-top: 1.2rem; display: flex; justify-content: center; gap: 1.6rem; flex-wrap: wrap; }
+      footer .foot-links a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: .4rem .2rem; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .btn { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <nav aria-label="Site">
+      <div class="wrap">
+        <a href="#about">What is Pool TV</a>
+        <a href="#games">The Games</a>
+        <a href="#show">The Show</a>
+        <a href="#secret">Secret Game</a>
+        <a href="#wild">Wild Nights</a>
+        <a class="fb" href="https://www.facebook.com/DEADPOOL.12139" target="_blank" rel="noopener">Facebook ↗</a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <div class="wrap">
+        <p class="hero-kicker">The Official Home of Pool TV</p>
+        <h1>Pool <span class="tv">TV</span></h1>
+        <div class="red-rule"></div>
+        <p class="catchphrase">“I’m back baby — <em>you’re watching Pool TV.</em>”</p>
+        <p class="hero-sub">One man. One mask. Every channel on the dial. Three seasons of the show, two games built on our own engine — plus a secret third — and a grand finale on the way.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Pool Tv No Signal — Download</a>
+          <a class="btn btn-ghost" href="https://www.facebook.com/DEADPOOL.12139" target="_blank" rel="noopener">Watch on Facebook</a>
+          <span class="dl-count" id="dlCount" hidden><strong id="dlNum">0</strong> downloads and counting</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ WHAT IS POOL TV ============ -->
+    <section id="about">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>What is <span class="brush">Pool TV</span>?</h2>
+          <div class="red-rule"></div>
+        </div>
+        <p class="lead">Pool TV is a one-man television universe — created, hosted, written and performed by <span class="white">Sean</span>. At the center of it is a masked host in red and black who travels through time, space and every channel on the dial, and no two stops are ever the same show.</p>
+        <p>Part comedy show, part brain-retraining, part magic and mischief — Pool TV bends the format until it breaks, then keeps broadcasting. Three seasons are out in the wild, and every episode, every joke and every detour through the static has been quietly setting up <span class="white">one grand finale</span>.</p>
+        <p>And Pool TV doesn’t just make television. It builds its own video games, on its own game engine — the <span class="white">Pool Tv 🕳📺 Game Engine</span> — <span class="white">Pool TV: No Signal</span> and <span class="white">Rockstar</span> are out front, and a third game is still classified.</p>
+        <div class="stats">
+          <div class="stat"><b>3</b><span>Seasons of the show</span></div>
+          <div class="stat"><b>21</b><span>Fighters in No Signal</span></div>
+          <div class="stat"><b>15</b><span>Channels to survive</span></div>
+          <div class="stat"><b>1</b><span>Grand finale coming</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE GAMES ============ -->
+    <section id="games">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>The <span class="brush">Games</span></h2>
+          <div class="red-rule"></div>
+        </div>
+        <p class="lead">Two games, both built on the Pool Tv 🕳📺 Game Engine — and a third one still classified. First up, the one you can play right now:</p>
+        <h3 class="game-title">Pool TV: No Signal</h3>
+        <figure>
+          <img class="game-art" src="asset-1.png" alt="Pool TV: No Signal main menu — Mr. Pool leaping over the menu while PuppyBears waits in his doghouse" width="1280" height="720" />
+          <figcaption>The No Signal main menu. Yes, the dog is playable. No, we won’t tell you how to unlock him.</figcaption>
+        </figure>
+
+        <div class="game-grid">
+          <div>
+            <h3>Survive the static</h3>
+            <p><span class="white">Pool TV: No Signal</span> is a movement-only arena-survival roguelike for Android. You move — your weapons fire themselves. Pick from <span class="white">21 fighters</span>, fight across <span class="white">15 channels</span>, and whatever you do, be ready: a boss is waiting at <span class="white">15:00</span> on every single channel.</p>
+            <p>It stars <span class="white">Mr. Pool</span> himself — and hiding somewhere in the roster is <span class="white">PuppyBears</span>, Sean’s dog, as a secret character. Clear a channel to unlock the next. Clear Death, and Endless mode is yours.</p>
+            <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Pool Tv No Signal</a>
+            <span class="dl-count" id="dlCount2" hidden>&nbsp;·&nbsp;<strong id="dlNum2">0</strong> downloads</span>
+            <p class="credit">Free for Android · Made by Pool Tv 🕳📺 Game Engine</p>
+          </div>
+          <div>
+            <h3>At a glance</h3>
+            <ul class="specs">
+              <li><span>Platform</span><span>Android</span></li>
+              <li><span>Fighters</span><span>21</span></li>
+              <li><span>Channels</span><span>15</span></li>
+              <li><span>Boss</span><span>Every channel, 15:00</span></li>
+              <li><span>Price</span><span>Free</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="trailer-block">
+          <h3>Official trailer</h3>
+          <div class="video-frame">
+            <video controls playsinline preload="none" poster="asset-1.png" src="asset-2.mp4"></video>
+          </div>
+        </div>
+
+        <div class="game-block">
+          <h3 class="game-title">Rockstar</h3>
+          <div class="rockstar-grid">
+            <figure>
+              <div class="rockstar-art">
+                <img src="asset-3.png" alt="Rockstar game art — a burning asteroid wreathed in flame" width="512" height="512" />
+              </div>
+              <figcaption>The Rockstar icon. Every run starts as a rock on fire.</figcaption>
+            </figure>
+            <div>
+              <h3>Outgrow the universe</h3>
+              <p class="lead white">Grow from a burning asteroid to a black hole — and restart the universe.</p>
+              <p>Start as a single burning rock and pull in everything around you. Grow through every stage of a star’s life, outgrow the rival burning across the system — and when you get big enough, collapse it all and start the universe over.</p>
+              <div class="video-frame">
+                <video controls playsinline preload="none" poster="asset-3.png" src="asset-4.mp4" aria-label="Rockstar gameplay video"></video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THE SHOW ============ -->
+    <section id="show">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>The <span class="brush">Show</span></h2>
+          <div class="red-rule"></div>
+        </div>
+        <p class="lead">Three seasons of Pool TV are out — the masked host bouncing through time, space and every channel there is, retraining brains and causing trouble the whole way. And all three seasons have been building to one thing: <span class="white">the grand finale</span>.</p>
+        <p>Full episodes live on the Pool TV Facebook — that’s the broadcast home of the show, where new episodes land first.</p>
+        <a class="btn btn-ghost" href="https://www.facebook.com/DEADPOOL.12139" target="_blank" rel="noopener">Watch the episodes on Facebook ↗</a>
+
+        <div class="finale-card">
+          <span class="tag">Now in production · Season 3</span>
+          <h3>Episode 12 — “Off the Rails 🛤”</h3>
+          <p>The current season’s big one — a trial by katana and armor with Ninja Warrior energy that goes completely off the rails. PuppyBears is the final obstacle. One sword draw, at the end — on the moon.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SECRET GAME ============ -->
+    <section id="secret">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Game Three — <span class="brush">Classified</span></h2>
+          <div class="red-rule"></div>
+        </div>
+        <div class="secret-card">
+          <span class="status">Classified · Do not broadcast</span>
+          <div class="redact" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p>A third Pool TV game is in the works. No name. No art. No details. When the signal unlocks, it’ll be announced right here first.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WILD NIGHTS ============ -->
+    <section id="wild">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Wild <span class="brush">Nights</span></h2>
+          <div class="red-rule"></div>
+        </div>
+        <p class="lead">The mask gets around. When Pool TV steps out, the night tends to get legendary.</p>
+        <div class="wild-grid">
+          <figure class="wild">
+            <img src="asset-5.webp" alt="The masked Pool TV host ringside at a Las Vegas championship fight night with Mike Tyson" width="1376" height="1824" />
+            <figcaption>Fight Night in Las Vegas — with Mike Tyson<span>Championship night, ringside with the champ.</span></figcaption>
+          </figure>
+          <figure class="wild">
+            <img src="asset-6.webp" alt="The masked Pool TV host relaxing in a lounge with Bill Clinton" width="1376" height="1824" />
+            <figcaption>Lounge nights — with Bill Clinton<span>Off the clock, still on the channel.</span></figcaption>
+          </figure>
+          <figure class="wild">
+            <img src="asset-7.webp" alt="Bill Clinton playing saxophone live with the masked Pool TV host nearby" width="1376" height="1824" />
+            <figcaption>Live jazz — Clinton on the sax<span>Some finales you hear before you see them.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+      <div class="wrap">
+        <p class="mark">Pool <span>TV</span></p>
+        <p>Pool TV — Created by Sean</p>
+        <p>Made by Pool Tv 🕳📺 Game Engine</p>
+        <div class="foot-links">
+          <a href="https://www.facebook.com/DEADPOOL.12139" target="_blank" rel="noopener">Pool TV on Facebook ↗</a>
+          <a href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Download No Signal</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Live download counter from the GitHub releases API.
+      // If anything fails, the counter stays hidden — never a fake number.
+      (function () {
+        fetch("https://api.github.com/repos/pool-tv/pool-tv-no-signal/releases", {
+          headers: { "Accept": "application/vnd.github+json" }
+        })
+          .then(function (r) { if (!r.ok) throw new Error("bad response"); return r.json(); })
+          .then(function (releases) {
+            var total = 0, found = false;
+            releases.forEach(function (rel) {
+              (rel.assets || []).forEach(function (a) {
+                if (a.name === "Pool.Tv.No.Signal.apk") { total += a.download_count || 0; found = true; }
+              });
+            });
+            if (!found) return;
+            var text = total.toLocaleString("en-US");
+            [["dlCount", "dlNum"], ["dlCount2", "dlNum2"]].forEach(function (pair) {
+              var box = document.getElementById(pair[0]);
+              var num = document.getElementById(pair[1]);
+              if (box && num) { num.textContent = text; box.hidden = false; }
+            });
+          })
+          .catch(function () { /* stay hidden */ });
+      })();
+    </script>
+  </body>
+</html>
