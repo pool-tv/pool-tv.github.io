@@ -65,6 +65,123 @@
       nav a.fb { color: var(--red-hot); margin-left: auto; }
       nav a.fb:hover { color: #fff; }
 
+      /* ---------- Static TV ---------- */
+      .static-tv {
+        max-width: 620px;
+        margin: 0 auto clamp(2.4rem, 6vw, 3.6rem);
+        position: relative;
+      }
+      .tv-antenna { position: relative; height: 72px; }
+      .tv-antenna .rod {
+        position: absolute; bottom: 14px; left: 50%;
+        width: 5px; height: 88px; border-radius: 3px;
+        background: linear-gradient(#45454e, #17171b);
+        transform-origin: bottom center;
+      }
+      .tv-antenna .rod::after {
+        content: ""; position: absolute; top: -11px; left: 50%;
+        width: 11px; height: 11px; border-radius: 50%;
+        transform: translateX(-50%);
+        background: radial-gradient(circle at 35% 30%, #d7dae2, #6d7078 70%);
+      }
+      .tv-antenna .rod-l { transform: translateX(-50%) rotate(-33deg); }
+      .tv-antenna .rod-r { transform: translateX(-50%) rotate(31deg); }
+      .tv-antenna .ant-base {
+        position: absolute; bottom: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 78px; height: 17px;
+        background: #1c1c21; border: 1px solid #37373f;
+        border-bottom: none; border-radius: 12px 12px 0 0;
+      }
+      .tv-body {
+        position: relative; z-index: 1;
+        background: linear-gradient(160deg, #28282f, #101013 58%, #18181d);
+        border: 1px solid #3b3b44; border-radius: 26px;
+        padding: clamp(.9rem, 3vw, 1.4rem);
+        box-shadow: 0 30px 60px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.09), 0 0 0 1px rgba(224,26,43,.10);
+      }
+      .tv-bezel {
+        background: #000; border-radius: 18px;
+        padding: clamp(.5rem, 2vw, .8rem);
+        box-shadow: inset 0 0 0 1px #2d2d34, inset 0 0 26px #000;
+      }
+      .tv-screen {
+        position: relative; aspect-ratio: 4 / 3;
+        border-radius: 16px; overflow: hidden; background: #0a0a0a;
+        box-shadow: inset 0 0 60px rgba(0,0,0,.85);
+      }
+      .tv-screen canvas {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        image-rendering: pixelated; opacity: .92;
+      }
+      .tv-scanlines {
+        position: absolute; inset: 0; pointer-events: none;
+        background: repeating-linear-gradient(to bottom, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
+      }
+      .tv-glare {
+        position: absolute; inset: 0; pointer-events: none;
+        background:
+          radial-gradient(90% 60% at 22% 6%, rgba(255,255,255,.10), transparent 55%),
+          radial-gradient(120% 120% at 50% 50%, transparent 62%, rgba(0,0,0,.5));
+      }
+      .tv-saying-wrap {
+        position: absolute; inset: 0;
+        display: flex; align-items: center; justify-content: center;
+        text-align: center; padding: 7% 9%;
+        background: radial-gradient(ellipse 92% 74% at 50% 50%, rgba(0,0,0,.68), rgba(0,0,0,.40) 58%, rgba(0,0,0,.10) 82%, transparent);
+      }
+      .tv-saying {
+        font-family: "Anton", sans-serif; text-transform: uppercase;
+        color: var(--red-hot); line-height: 1.14; letter-spacing: .02em;
+        margin: 0;
+        text-shadow: 0 3px 0 rgba(0,0,0,.92), 0 0 24px rgba(0,0,0,.95), 0 0 7px rgba(0,0,0,.95);
+        transition: opacity .45s ease, transform .45s ease;
+      }
+      .tv-saying.out { opacity: 0; transform: translateY(12px) scale(.97); }
+      .tv-saying.sz-1 { font-size: clamp(2rem, 8vw, 3.5rem); }
+      .tv-saying.sz-2 { font-size: clamp(1.55rem, 6vw, 2.65rem); }
+      .tv-saying.sz-3 { font-size: clamp(1.2rem, 4.8vw, 2.05rem); }
+      .tv-controls {
+        display: flex; align-items: center; gap: 1rem;
+        padding: .95rem .35rem .1rem;
+      }
+      .tv-speaker {
+        width: 92px; height: 28px; flex: 0 0 auto;
+        background-image: radial-gradient(circle, #050505 2px, rgba(255,255,255,.07) 2.6px, transparent 3.2px);
+        background-size: 11px 11px; background-position: center;
+      }
+      .tv-knob {
+        width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto;
+        background: radial-gradient(circle at 35% 30%, #4a4a54, #17171b 72%);
+        border: 1px solid #3d3d46; position: relative;
+        box-shadow: 0 3px 8px rgba(0,0,0,.6);
+      }
+      .tv-knob::after {
+        content: ""; position: absolute; top: 3px; left: 50%;
+        width: 3px; height: 9px; border-radius: 2px;
+        background: var(--silver); transform: translateX(-50%);
+      }
+      .tv-knob.k2 { transform: rotate(55deg); }
+      .tv-badge {
+        margin-left: auto; display: inline-flex; align-items: center; gap: .5rem;
+        font-family: "Anton", sans-serif; letter-spacing: .22em;
+        font-size: .8rem; color: var(--silver); text-transform: uppercase;
+      }
+      .tv-badge i {
+        width: 9px; height: 9px; border-radius: 50%; background: var(--red-hot);
+        box-shadow: 0 0 10px rgba(255,43,61,.9); font-style: normal;
+      }
+      .tv-feet {
+        display: flex; justify-content: space-between;
+        width: 72%; margin: 0 auto;
+      }
+      .tv-feet i {
+        display: block; width: 58px; height: 15px;
+        background: #0e0e11; border: 1px solid #2c2c33; border-top: none;
+        transform: skewX(-14deg);
+      }
+      .tv-feet i:last-child { transform: skewX(14deg); }
+
       /* ---------- Hero ---------- */
       .hero {
         position: relative;
@@ -119,6 +236,9 @@
       .btn-ghost:hover { border-color: var(--silver); }
       .dl-count { font-size: .95rem; color: var(--silver-dim); }
       .dl-count strong { color: var(--white); font-size: 1.1rem; }
+      .pc-downloads { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .9rem; align-items: center; }
+      .pc-downloads .btn { min-height: 2.9rem; padding: .65rem 1.15rem; font-size: .92rem; }
+      .pc-note { flex-basis: 100%; margin: .15rem 0 0; color: var(--silver-dim); font-size: .95rem; }
 
       /* ---------- Sections ---------- */
       section { padding: clamp(3rem, 8vw, 5.5rem) 0; }
@@ -354,6 +474,34 @@
     <!-- ============ HERO ============ -->
     <header class="hero">
       <div class="wrap">
+        <!-- ============ STATIC TV ============ -->
+        <div class="static-tv">
+          <div class="tv-antenna" aria-hidden="true">
+            <span class="rod rod-l"></span>
+            <span class="rod rod-r"></span>
+            <span class="ant-base"></span>
+          </div>
+          <div class="tv-body">
+            <div class="tv-bezel">
+              <div class="tv-screen" role="img" aria-label="A retro television tuned to static, broadcasting Pool TV sayings in red">
+                <canvas id="tvStatic" width="180" height="135" aria-hidden="true"></canvas>
+                <div class="tv-scanlines" aria-hidden="true"></div>
+                <div class="tv-saying-wrap">
+                  <p class="tv-saying sz-2" id="tvSaying">I’m back baby — you’re watching Pool TV</p>
+                </div>
+                <div class="tv-glare" aria-hidden="true"></div>
+              </div>
+            </div>
+            <div class="tv-controls" aria-hidden="true">
+              <span class="tv-speaker"></span>
+              <span class="tv-knob"></span>
+              <span class="tv-knob k2"></span>
+              <span class="tv-badge"><i></i>Pool TV</span>
+            </div>
+          </div>
+          <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
+        </div>
+
         <p class="hero-kicker">The Official Home of Pool TV</p>
         <h1>Pool <span class="tv">TV</span></h1>
         <div class="red-rule"></div>
@@ -407,6 +555,11 @@
             <p>It stars <span class="white">Mr. Pool</span> himself — and hiding somewhere in the roster is <span class="white">PuppyBears</span>, Sean’s dog, as a secret character. Clear a channel to unlock the next. Clear Death, and Endless mode is yours.</p>
             <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Pool Tv No Signal</a>
             <span class="dl-count" id="dlCount2" hidden>&nbsp;·&nbsp;<strong id="dlNum2">0</strong> downloads</span>
+            <div class="pc-downloads">
+              <a class="btn btn-ghost" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/pc-v1.30/PoolTV-NoSignal-Windows.zip">Download for Windows (PC)</a>
+              <a class="btn btn-ghost" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/pc-v1.30/PoolTV-NoSignal-Linux.zip">Download for Linux (PC)</a>
+              <p class="pc-note">PC edition — extract the folder and play. WASD or gamepad.</p>
+            </div>
             <p class="credit">Free for Android · Made by Pool Tv 🕳📺 Game Engine</p>
           </div>
           <div>
@@ -753,6 +906,67 @@
             });
           })
           .catch(function () { /* stay hidden */ });
+      })();
+    </script>
+
+    <script>
+      // Static TV: canvas noise + rotating Pool TV sayings.
+      (function () {
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // --- Animated static ---
+        var canvas = document.getElementById("tvStatic");
+        var ctx = canvas.getContext("2d");
+        var W = canvas.width, H = canvas.height;
+        var frame = ctx.createImageData(W, H);
+        var data = frame.data;
+        function drawStatic() {
+          for (var i = 0; i < data.length; i += 4) {
+            var v = (Math.random() * 255) | 0;
+            data[i] = v; data[i + 1] = v; data[i + 2] = v; data[i + 3] = 255;
+          }
+          ctx.putImageData(frame, 0, 0);
+        }
+        drawStatic();
+        if (!reduced) {
+          var running = true, last = 0;
+          function loop(ts) {
+            if (running && ts - last > 50) { drawStatic(); last = ts; }
+            requestAnimationFrame(loop);
+          }
+          requestAnimationFrame(loop);
+          if ("IntersectionObserver" in window) {
+            new IntersectionObserver(function (entries) {
+              running = entries[0].isIntersecting && !document.hidden;
+            }).observe(canvas);
+          }
+          document.addEventListener("visibilitychange", function () {
+            running = !document.hidden;
+          });
+        }
+
+        // --- Rotating sayings ---
+        var sayings = [
+          { text: "I’m back baby — you’re watching Pool TV", cls: "sz-2" },
+          { text: "ABLACADOOLA", cls: "sz-1" },
+          { text: "Have honor. Have respect. Have loyalty. Stand on the business.", cls: "sz-3" },
+          { text: "Cursed not to die. I stay.", cls: "sz-2" },
+          { text: "YOU’RE WATCHING POOL TV", cls: "sz-1" }
+        ];
+        var el = document.getElementById("tvSaying");
+        if (!el || reduced) return;
+        var idx = 0;
+        setInterval(function () {
+          el.classList.add("out");
+          setTimeout(function () {
+            idx = (idx + 1) % sayings.length;
+            el.textContent = sayings[idx].text;
+            el.className = "tv-saying " + sayings[idx].cls;
+            // force reflow so the fade-in transition plays from the hidden state
+            void el.offsetWidth;
+            el.classList.remove("out");
+          }, 460);
+        }, 4000);
       })();
     </script>
   </body>
