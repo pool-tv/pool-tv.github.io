@@ -239,6 +239,11 @@
       .pc-downloads { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .9rem; align-items: center; }
       .pc-downloads .btn { min-height: 2.9rem; padding: .65rem 1.15rem; font-size: .92rem; }
       .pc-note { flex-basis: 100%; margin: .15rem 0 0; color: var(--silver-dim); font-size: .95rem; }
+      .dl-heading {
+        font-family: "Anton", sans-serif; text-transform: uppercase;
+        color: var(--white); font-size: 1.05rem; letter-spacing: .06em;
+        margin: 1.6rem 0 .8rem;
+      }
 
       /* ---------- Sections ---------- */
       section { padding: clamp(3rem, 8vw, 5.5rem) 0; }
@@ -551,21 +556,22 @@
         <div class="game-grid">
           <div>
             <h3>Survive the static</h3>
-            <p><span class="white">Pool TV: No Signal</span> is a movement-only arena-survival roguelike for Android. You move — your weapons fire themselves. Pick from <span class="white">21 fighters</span>, fight across <span class="white">15 channels</span>, and whatever you do, be ready: a boss is waiting at <span class="white">15:00</span> on every single channel.</p>
+            <p><span class="white">Pool TV: No Signal</span> is a movement-only arena-survival roguelike for Android and PC. You move — your weapons fire themselves. Pick from <span class="white">21 fighters</span>, fight across <span class="white">15 channels</span>, and whatever you do, be ready: a boss is waiting at <span class="white">15:00</span> on every single channel.</p>
             <p>It stars <span class="white">Mr. Pool</span> himself — and hiding somewhere in the roster is <span class="white">PuppyBears</span>, Sean’s dog, as a secret character. Clear a channel to unlock the next. Clear Death, and Endless mode is yours.</p>
-            <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Pool Tv No Signal</a>
+            <h3 class="dl-heading">Download — pick your platform</h3>
+            <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Download for Android</a>
             <span class="dl-count" id="dlCount2" hidden>&nbsp;·&nbsp;<strong id="dlNum2">0</strong> downloads</span>
             <div class="pc-downloads">
               <a class="btn btn-ghost" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/pc-v1.30/PoolTV-NoSignal-Windows.zip">Download for Windows (PC)</a>
               <a class="btn btn-ghost" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/pc-v1.30/PoolTV-NoSignal-Linux.zip">Download for Linux (PC)</a>
               <p class="pc-note">PC edition — extract the folder and play. WASD or gamepad.</p>
             </div>
-            <p class="credit">Free for Android · Made by Pool Tv 🕳📺 Game Engine</p>
+            <p class="credit">Free for Android and PC · Made by Pool Tv 🕳📺 Game Engine</p>
           </div>
           <div>
             <h3>At a glance</h3>
             <ul class="specs">
-              <li><span>Platform</span><span>Android</span></li>
+              <li><span>Platform</span><span>Android · PC (Windows &amp; Linux)</span></li>
               <li><span>Fighters</span><span>21</span></li>
               <li><span>Channels</span><span>15</span></li>
               <li><span>Boss</span><span>Every channel, 15:00</span></li>
