@@ -236,6 +236,31 @@
       .btn-ghost:hover { border-color: var(--silver); }
       .dl-count { font-size: .95rem; color: var(--silver-dim); }
       .dl-count strong { color: var(--white); font-size: 1.1rem; }
+      .dl-total { display: inline-block; margin: 0 0 .4rem; padding: .45rem .95rem; border: 1px solid var(--red-dark); border-radius: 999px; background: rgba(224,26,43,.08); color: var(--silver); font-size: .98rem; }
+      .dl-total strong { color: var(--white); font-size: 1.18rem; }
+      .dl-total[hidden] { display: none; }
+
+      /* ---------- Purple portal background ---------- */
+      #portalBg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+      header, section, footer { position: relative; z-index: 1; }
+
+      /* ---------- Pool TV Stereo ---------- */
+      .stereo-box { max-width: 580px; margin: 1.8rem auto 0; background: linear-gradient(180deg, #17171b, #0a0a0c); border: 1px solid var(--line); border-radius: 18px; padding: .9rem 1rem 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05); text-align: left; }
+      .stereo-top { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .7rem; }
+      .stereo-brand { font-family: "Anton", sans-serif; letter-spacing: .14em; color: var(--white); font-size: .95rem; }
+      .stereo-brand em { color: var(--red-hot); font-style: normal; }
+      .stereo-fm { font-family: ui-monospace, "Courier New", monospace; color: #c99aff; font-size: .8rem; letter-spacing: .06em; }
+      .stereo-light { flex: 0 0 auto; width: 9px; height: 9px; border-radius: 50%; background: var(--red-hot); box-shadow: 0 0 10px var(--red-hot); animation: stereoPulse 1.6s ease-in-out infinite; }
+      @keyframes stereoPulse { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+      .stereo-main { display: flex; align-items: stretch; gap: .8rem; }
+      .stereo-speaker { flex: 0 0 62px; border-radius: 12px; border: 1px solid #1e1e23; background: radial-gradient(circle at 50% 36%, #26262c 0 15px, transparent 16px), radial-gradient(circle at 50% 76%, #202027 0 10px, transparent 11px), repeating-radial-gradient(circle at 50% 36%, #0e0e11 0 2px, #1a1a1f 2px 4px); }
+      .stereo-screen { flex: 1 1 auto; position: relative; border: 3px solid #000; outline: 1px solid #2c2c33; border-radius: 10px; overflow: hidden; background: #000; padding: 0; cursor: pointer; }
+      .stereo-screen video { width: 100%; height: 350px; object-fit: contain; background: #000; }
+      .stereo-sound { position: absolute; left: 50%; bottom: .6rem; transform: translateX(-50%); background: rgba(0,0,0,.75); color: #fff; border: 1px solid rgba(255,255,255,.35); padding: .32rem .75rem; border-radius: 999px; font-family: "Anton", sans-serif; font-size: .78rem; letter-spacing: .08em; white-space: nowrap; pointer-events: none; }
+      .stereo-deck { display: flex; gap: .45rem; justify-content: center; margin-top: .75rem; }
+      .stereo-deck i { width: 34px; height: 10px; border-radius: 5px; background: #1d1d22; border: 1px solid #2a2a31; }
+      .stereo-deck i.wide { width: 64px; }
+      @media (max-width: 560px) { .stereo-speaker { flex-basis: 36px; } .stereo-screen video { height: 300px; } .stereo-fm { display: none; } }
       .pc-downloads { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: .9rem; align-items: center; }
       .pc-downloads .btn { min-height: 2.9rem; padding: .65rem 1.15rem; font-size: .92rem; }
       .pc-note { flex-basis: 100%; margin: .15rem 0 0; color: var(--silver-dim); font-size: .95rem; }
@@ -464,6 +489,7 @@
     </style>
   </head>
   <body>
+    <canvas id="portalBg" aria-hidden="true"></canvas>
 
     <nav aria-label="Site">
       <div class="wrap">
@@ -507,15 +533,32 @@
           <div class="tv-feet" aria-hidden="true"><i></i><i></i></div>
         </div>
 
+        <!-- ============ POOL TV STEREO ============ -->
+        <div class="stereo-box">
+          <div class="stereo-top">
+            <span class="stereo-brand">POOL <em>TV</em> STEREO</span>
+            <span class="stereo-light" aria-hidden="true"></span>
+            <span class="stereo-fm">FM 101.3 · THE REBEL</span>
+          </div>
+          <div class="stereo-main">
+            <div class="stereo-speaker" aria-hidden="true"></div>
+            <button class="stereo-screen" id="stereoScreen" type="button" aria-label="Pool TV video — tap to turn the sound on or off">
+              <video id="stereoVideo" autoplay muted loop playsinline preload="metadata" poster="pool-tv-stereo-poster.jpg" src="pool-tv-stereo.mp4"></video>
+              <span class="stereo-sound" id="stereoSound">🔇 TAP FOR SOUND</span>
+            </button>
+            <div class="stereo-speaker" aria-hidden="true"></div>
+          </div>
+          <div class="stereo-deck" aria-hidden="true"><i></i><i></i><i class="wide"></i><i></i><i></i></div>
+        </div>
+
         <p class="hero-kicker">The Official Home of Pool TV</p>
         <h1>Pool <span class="tv">TV</span></h1>
         <div class="red-rule"></div>
         <p class="catchphrase">“I’m back baby — <em>you’re watching Pool TV.</em>”</p>
         <p class="hero-sub">One man. One mask. Every channel on the dial. Three seasons of the show, two games built on our own engine — plus a secret third — and a grand finale on the way.</p>
         <div class="hero-ctas">
-          <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Pool Tv No Signal — Download</a>
+          <a class="btn btn-red" href="#games">Play the Games ↓</a>
           <a class="btn btn-ghost" href="https://www.facebook.com/DEADPOOL.12139" target="_blank" rel="noopener">Watch on Facebook</a>
-          <span class="dl-count" id="dlCount" hidden><strong id="dlNum">0</strong> downloads and counting</span>
         </div>
       </div>
     </header>
@@ -559,13 +602,13 @@
             <p><span class="white">Pool TV: No Signal</span> is a movement-only arena-survival roguelike for Android and PC. You move — your weapons fire themselves. Pick from <span class="white">21 fighters</span>, fight across <span class="white">15 channels</span>, and whatever you do, be ready: a boss is waiting at <span class="white">15:00</span> on every single channel.</p>
             <p>It stars <span class="white">Mr. Pool</span> himself — and hiding somewhere in the roster is <span class="white">PuppyBears</span>, Sean’s dog, as a secret character. Clear a channel to unlock the next. Clear Death, and Endless mode is yours.</p>
             <h3 class="dl-heading">Download — pick your platform</h3>
-            <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Download for Android</a>
-            <span class="dl-count" id="dlCount2" hidden>&nbsp;·&nbsp;<strong id="dlNum2">0</strong> downloads</span>
+            <p class="dl-total" id="dlTotal" hidden>🔥 <strong id="dlTotalNum">0</strong> downloads and counting — one total for the game, all platforms</p>
             <div class="pc-downloads">
+              <a class="btn btn-red" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/v1.30-public/Pool.Tv.No.Signal.apk">Download for Android</a>
               <a class="btn btn-ghost" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/pc-v1.30/PoolTV-NoSignal-Windows.zip">Download for Windows (PC)</a>
               <a class="btn btn-ghost" href="https://github.com/pool-tv/pool-tv-no-signal/releases/download/pc-v1.30/PoolTV-NoSignal-Linux.zip">Download for Linux (PC)</a>
-              <p class="pc-note">PC edition — extract the folder and play. WASD or gamepad.</p>
             </div>
+            <p class="pc-note">PC edition — extract the folder and play. WASD or gamepad.</p>
             <p class="credit">Free for Android and PC · Made by Pool Tv 🕳📺 Game Engine</p>
           </div>
           <div>
@@ -889,10 +932,11 @@
     </footer>
 
     <script>
-      // Live download counter from the GitHub releases API.
-      // If anything fails, the counter stays hidden — never a fake number.
+      // ONE live counter for the game: every download of Pool TV: No Signal,
+      // all platforms (Android + Windows + Linux), summed from the GitHub
+      // releases API. If anything fails, the counter stays hidden — never fake.
       (function () {
-        fetch("https://api.github.com/repos/pool-tv/pool-tv-no-signal/releases", {
+        fetch("https://api.github.com/repos/pool-tv/pool-tv-no-signal/releases?per_page=100", {
           headers: { "Accept": "application/vnd.github+json" }
         })
           .then(function (r) { if (!r.ok) throw new Error("bad response"); return r.json(); })
@@ -900,16 +944,13 @@
             var total = 0, found = false;
             releases.forEach(function (rel) {
               (rel.assets || []).forEach(function (a) {
-                if (a.name === "Pool.Tv.No.Signal.apk") { total += a.download_count || 0; found = true; }
+                total += a.download_count || 0; found = true;
               });
             });
             if (!found) return;
-            var text = total.toLocaleString("en-US");
-            [["dlCount", "dlNum"], ["dlCount2", "dlNum2"]].forEach(function (pair) {
-              var box = document.getElementById(pair[0]);
-              var num = document.getElementById(pair[1]);
-              if (box && num) { num.textContent = text; box.hidden = false; }
-            });
+            var box = document.getElementById("dlTotal");
+            var num = document.getElementById("dlTotalNum");
+            if (box && num) { num.textContent = total.toLocaleString("en-US"); box.hidden = false; }
           })
           .catch(function () { /* stay hidden */ });
       })();
@@ -973,6 +1014,97 @@
             el.classList.remove("out");
           }, 460);
         }, 4000);
+      })();
+    </script>
+    <script>
+      // Purple portal background + the Pool TV Stereo box:
+      // Sean's video plays muted on loop — tap the screen for sound on/off.
+      (function () {
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // --- Stereo box: tap toggles the sound ---
+        var vid = document.getElementById("stereoVideo");
+        var btn = document.getElementById("stereoScreen");
+        var tag = document.getElementById("stereoSound");
+        if (vid && btn && tag) {
+          btn.addEventListener("click", function () {
+            vid.muted = !vid.muted;
+            if (!vid.muted) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); }
+            tag.textContent = vid.muted ? "🔇 TAP FOR SOUND" : "🔊 SOUND ON — TAP TO MUTE";
+          });
+        }
+
+        // --- Purple portal: an animated vortex behind the whole page ---
+        var canvas = document.getElementById("portalBg");
+        if (!canvas) return;
+        var ctx = canvas.getContext("2d");
+        var W = 0, H = 0, cx = 0, cy = 0, R = 0;
+        var P = [], STARS = [];
+        function spawn(any) {
+          return {
+            a: Math.random() * 6.283,
+            r: any ? 30 + Math.random() * R : R * (0.78 + Math.random() * 0.28),
+            s: 0.5 + Math.random() * 1.1,
+            sz: 0.8 + Math.random() * 2.0,
+            hue: 262 + Math.random() * 46
+          };
+        }
+        function resize() {
+          W = canvas.width = window.innerWidth;
+          H = canvas.height = window.innerHeight;
+          cx = W * 0.5; cy = H * 0.30;
+          R = Math.min(W, H) * 0.46;
+          STARS = [];
+          for (var i = 0; i < 70; i++)
+            STARS.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.3 + 0.3, p: Math.random() * 6.28 });
+          if (!P.length) for (var j = 0; j < 130; j++) P.push(spawn(true));
+        }
+        function frame(t) {
+          ctx.fillStyle = "rgba(5,5,5,0.30)";
+          ctx.fillRect(0, 0, W, H);
+          var g = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.25);
+          g.addColorStop(0, "rgba(124,58,237,0.20)");
+          g.addColorStop(0.55, "rgba(109,40,217,0.08)");
+          g.addColorStop(1, "rgba(109,40,217,0)");
+          ctx.fillStyle = g;
+          ctx.fillRect(cx - R * 1.3, cy - R * 1.3, R * 2.6, R * 2.6);
+          for (var i = 0; i < STARS.length; i++) {
+            var s = STARS[i];
+            ctx.globalAlpha = 0.25 + 0.2 * Math.sin(t * 0.001 + s.p);
+            ctx.fillStyle = "#cdbcf5";
+            ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+          ctx.strokeStyle = "rgba(168,85,247,0.35)";
+          ctx.lineWidth = 2;
+          ctx.setLineDash([26, 18]);
+          ctx.lineDashOffset = -t * 0.02;
+          ctx.beginPath(); ctx.arc(cx, cy, R * 0.62, 0, 6.283); ctx.stroke();
+          ctx.strokeStyle = "rgba(232,121,249,0.22)";
+          ctx.setLineDash([10, 24]);
+          ctx.lineDashOffset = t * 0.03;
+          ctx.beginPath(); ctx.arc(cx, cy, R * 0.85, 0, 6.283); ctx.stroke();
+          ctx.setLineDash([]);
+          for (var j = 0; j < P.length; j++) {
+            var p = P[j];
+            p.a += 0.012 * p.s * (120 / Math.max(p.r, 30));
+            p.r -= 0.35 * p.s;
+            if (p.r < 24) P[j] = p = spawn(false);
+            var x = cx + Math.cos(p.a) * p.r, y = cy + Math.sin(p.a) * p.r * 0.92;
+            ctx.fillStyle = "hsla(" + p.hue + ",95%,72%,0.85)";
+            ctx.beginPath(); ctx.arc(x, y, p.sz, 0, 6.283); ctx.fill();
+          }
+          var core = ctx.createRadialGradient(cx, cy, 0, cx, cy, 30);
+          core.addColorStop(0, "rgba(240,220,255,0.85)");
+          core.addColorStop(0.4, "rgba(168,85,247,0.45)");
+          core.addColorStop(1, "rgba(124,58,237,0)");
+          ctx.fillStyle = core;
+          ctx.beginPath(); ctx.arc(cx, cy, 30, 0, 6.283); ctx.fill();
+          if (!reduced) requestAnimationFrame(frame);
+        }
+        resize();
+        window.addEventListener("resize", resize);
+        requestAnimationFrame(frame);
       })();
     </script>
   </body>
