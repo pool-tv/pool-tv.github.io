@@ -244,6 +244,67 @@
       .redact i { display: block; height: 1.9rem; background: #000; border: 1px solid var(--line); flex: 1; }
       .redact i:nth-child(2) { flex: .55; }
 
+      /* ---------- Episode archive ---------- */
+      .archive-note {
+        border: 1px solid var(--line); border-left: 4px solid var(--red);
+        background: var(--panel); padding: 1rem 1.2rem; margin: 0 0 1.4rem;
+        color: var(--white); font-weight: 600; max-width: 760px;
+      }
+      .season-block { margin-top: 3rem; }
+      .season-head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+      .season-head h3 {
+        font-family: "Anton", sans-serif; text-transform: uppercase;
+        color: var(--white); font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+        margin: 0; line-height: 1.05;
+      }
+      .season-head h3 span { color: var(--red); }
+      .season-head p { margin: 0; color: var(--silver-dim); font-size: .95rem; }
+      .ep-grid {
+        display: grid; gap: 1.4rem;
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      @media (min-width: 640px) { .ep-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (min-width: 1020px) { .ep-grid { grid-template-columns: repeat(3, 1fr); } }
+      .ep-card {
+        width: 100%; max-width: 360px;
+        background: var(--panel); border: 1px solid var(--line);
+        display: flex; flex-direction: column;
+      }
+      .ep-card video {
+        width: 100%; aspect-ratio: 9/16; max-height: 560px;
+        background: #000; object-fit: contain; display: block;
+      }
+      .ep-meta { padding: 1rem 1.1rem 1.15rem; }
+      .ep-num {
+        font-family: "Anton", sans-serif; font-size: .75rem;
+        letter-spacing: .22em; color: var(--red-hot); text-transform: uppercase;
+        display: block; margin-bottom: .3rem;
+      }
+      .ep-title {
+        font-family: "Anton", sans-serif; color: var(--white);
+        font-size: 1.25rem; line-height: 1.15; margin: 0; text-transform: uppercase;
+        overflow-wrap: break-word;
+      }
+      .ep-note { color: var(--silver-dim); font-size: .88rem; margin: .55rem 0 0; line-height: 1.5; }
+      .ep-extra {
+        display: inline-flex; align-items: center; min-height: 2.5rem;
+        margin-top: .7rem; padding: .35rem 0;
+        color: var(--red-hot); font-weight: 700; text-decoration: none;
+      }
+      .ep-extra:hover { text-decoration: underline; color: #fff; }
+      .ep-lost {
+        aspect-ratio: 9/16; max-height: 560px; background: #000;
+        border-bottom: 1px solid var(--line);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        gap: .6rem; text-align: center; padding: 1.5rem;
+      }
+      .ep-lost b {
+        font-family: "Anton", sans-serif; letter-spacing: .24em;
+        color: var(--red-hot); text-transform: uppercase; font-size: 1.3rem;
+      }
+      .ep-lost span { color: var(--silver-dim); font-size: .92rem; max-width: 230px; }
+
       /* ---------- Wild nights ---------- */
       .wild-grid { display: grid; gap: 1.4rem; }
       @media (min-width: 760px) { .wild-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -396,14 +457,221 @@
           <h2>The <span class="brush">Show</span></h2>
           <div class="red-rule"></div>
         </div>
+        <p class="archive-note">The full Pool TV archive lives here now — every episode we could recover, watchable right on this page.</p>
         <p class="lead">Three seasons of Pool TV are out — the masked host bouncing through time, space and every channel there is, retraining brains and causing trouble the whole way. And all three seasons have been building to one thing: <span class="white">the grand finale</span>.</p>
-        <p>Full episodes live on the Pool TV Facebook — that’s the broadcast home of the show, where new episodes land first.</p>
+        <p>New episodes still land first on the Pool TV Facebook — that’s the broadcast home of the show.</p>
         <a class="btn btn-ghost" href="https://www.facebook.com/DEADPOOL.12139" target="_blank" rel="noopener">Watch the episodes on Facebook ↗</a>
 
         <div class="finale-card">
           <span class="tag">Now in production · Season 3</span>
           <h3>Episode 12 — “Off the Rails 🛤”</h3>
           <p>The current season’s big one — a trial by katana and armor with Ninja Warrior energy that goes completely off the rails. PuppyBears is the final obstacle. One sword draw, at the end — on the moon.</p>
+        </div>
+
+        <!-- ===== Season 1 ===== -->
+        <div class="season-block">
+          <div class="season-head">
+            <h3>Season <span>1</span></h3>
+            <p>13 episodes · 2021 — where the signal starts</p>
+          </div>
+          <div class="ep-grid">
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E01.-.I.am.Dead.-.Who.is.Pool.mp4" aria-label="Season 1 Episode 1 — I am Dead — Who is Pool"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 1</span><h4 class="ep-title">I am Dead — Who is Pool</h4></div>
+            </article>
+            <article class="ep-card">
+              <div class="ep-lost"><b>Lost Episode</b><span>This one hasn’t been recovered yet — it’ll be plugged in here when it surfaces.</span></div>
+              <div class="ep-meta"><span class="ep-num">Episode 2</span><h4 class="ep-title">I am Trash</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E03.-.Rapid.Fire.mp4" aria-label="Season 1 Episode 3 — Rapid Fire"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 3</span><h4 class="ep-title">Rapid Fire</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E04.-.Judgement.Day.mp4" aria-label="Season 1 Episode 4 — Judgement Day"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 4</span><h4 class="ep-title">Judgement Day</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E05.-.The.Holy.Grail.mp4" aria-label="Season 1 Episode 5 — The Holy Grail"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 5</span><h4 class="ep-title">The Holy Grail</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E06.-.Maximum.Effort.mp4" aria-label="Season 1 Episode 6 — Maximum Effort"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 6</span><h4 class="ep-title">Maximum Effort</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E07.-.Mission.Unstoppable.00D.mp4" aria-label="Season 1 Episode 7 — Mission Unstoppable 00D"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 7</span><h4 class="ep-title">Mission Unstoppable 00D</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E08.-.Keep.It.Under.The.Table.mp4" aria-label="Season 1 Episode 8 — Keep It Under The Table"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 8</span><h4 class="ep-title">Keep It Under The Table</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E09.-.I.Think.I.Have.a.Ghost.mp4" aria-label="Season 1 Episode 9 — I Think I Have a Ghost"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 9</span><h4 class="ep-title">I Think I Have a Ghost</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E10.-.Daddy.s.Home.mp4" aria-label="Season 1 Episode 10 — Daddy's Home"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 10</span><h4 class="ep-title">Daddy’s Home</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E11.-.Cheesing.Two.Rolls.mp4" aria-label="Season 1 Episode 11 — Cheesing Two Rolls"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 11</span><h4 class="ep-title">Cheesing Two Rolls</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E12.-.Unfinished.Bitchyness.mp4" aria-label="Season 1 Episode 12 — Unfinished Bitchyness"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 12</span><h4 class="ep-title">Unfinished Bitchyness</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-1/S01E13.-.Your.Friendly.Neighborhood.Deadpool.mp4" aria-label="Season 1 Episode 13 — Your Friendly Neighborhood Deadpool"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 13</span><h4 class="ep-title">Your Friendly Neighborhood Deadpool</h4></div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===== Season 2 ===== -->
+        <div class="season-block">
+          <div class="season-head">
+            <h3>Season <span>2</span></h3>
+            <p>13 episodes · the legend grows louder</p>
+          </div>
+          <div class="ep-grid">
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E01.-.The.Mother.Fucking.Legend.mp4" aria-label="Season 2 Episode 1 — The Mother Fucking Legend"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 1</span><h4 class="ep-title">The Mother Fucking Legend</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E02.-.Turn.It.Up.mp4" aria-label="Season 2 Episode 2 — Turn It Up"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 2</span><h4 class="ep-title">Turn It Up</h4>
+                <a class="ep-extra" href="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E02.-.Turn.It.Up.Extra.Sauce.mp4">▶ Extra Sauce cut</a>
+              </div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E03.-.WTF.Did.He.Just.Say.mp4" aria-label="Season 2 Episode 3 — WTF Did He Just Say"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 3</span><h4 class="ep-title">WTF Did He Just Say</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E04.-.Push.It.to.the.Limit.mp4" aria-label="Season 2 Episode 4 — Push It to the Limit"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 4</span><h4 class="ep-title">Push It to the Limit</h4>
+                <a class="ep-extra" href="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E04.-.Push.It.to.the.Limit.Extended.Version.mp4">▶ Extended Version</a>
+              </div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E05.-.Blow.Your.Fucking.Mind.mp4" aria-label="Season 2 Episode 5 — Blow Your Fucking Mind"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 5</span><h4 class="ep-title">Blow Your Fucking Mind</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E06.-.CoolPooL.mp4" aria-label="Season 2 Episode 6 — CoolPooL"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 6</span><h4 class="ep-title">CoolPooL</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E07.-.The.Marvel.mp4" aria-label="Season 2 Episode 7 — The Marvel"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 7</span><h4 class="ep-title">The Marvel</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E08.-.Diafuckingbolical.mp4" aria-label="Season 2 Episode 8 — Diafuckingbolical"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 8</span><h4 class="ep-title">Diafuckingbolical</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E09.-.The.Comedian.mp4" aria-label="Season 2 Episode 9 — The Comedian"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 9</span><h4 class="ep-title">The Comedian</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E10.-.Taking.the.Kids.to.Skool.mp4" aria-label="Season 2 Episode 10 — Taking the Kids to Skool"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 10</span><h4 class="ep-title">Taking the Kids to Skool</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E11.-.Episode.13.mp4" aria-label="Season 2 Episode 11 — Episode 13?"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 11</span><h4 class="ep-title">Episode 13?</h4>
+                <p class="ep-note">Episode #24 overall — the “13?” is a Pool TV Easter egg.</p>
+              </div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E12.-.D.O.A.mp4" aria-label="Season 2 Episode 12 — D.O.A"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 12</span><h4 class="ep-title">D.O.A</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-2/S02E13.-.The.Final.Finale.mp4" aria-label="Season 2 Episode 13 — The Final Finale"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 13</span><h4 class="ep-title">The Final Finale</h4></div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===== Season 3 ===== -->
+        <div class="season-block">
+          <div class="season-head">
+            <h3>Season <span>3</span></h3>
+            <p>12 episodes · building to the grand finale</p>
+          </div>
+          <div class="ep-grid">
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E01.-.Lightning.in.a.Bottle.mp4" aria-label="Season 3 Episode 1 — Lightning in a Bottle"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 1</span><h4 class="ep-title">Lightning in a Bottle</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E02.-.Training.Day.mp4" aria-label="Season 3 Episode 2 — Training Day"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 2</span><h4 class="ep-title">Training Day</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E03.-.Its.Time.mp4" aria-label="Season 3 Episode 3 — Its Time"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 3</span><h4 class="ep-title">Its Time</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E04.-.The.Judy.mp4" aria-label="Season 3 Episode 4 — The Judy"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 4</span><h4 class="ep-title">The Judy</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E05.-.Big.Puff.Daddy.mp4" aria-label="Season 3 Episode 5 — Big Puff Daddy"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 5</span><h4 class="ep-title">Big Puff Daddy</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E06.-.All.Or.Nothing.mp4" aria-label="Season 3 Episode 6 — All Or Nothing"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 6</span><h4 class="ep-title">All Or Nothing</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E07.-.Trans.Fags.and.Automobiles.mp4" aria-label="Season 3 Episode 7 — Trans, Fags, and Automobiles"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 7</span><h4 class="ep-title">Trans, Fags, and Automobiles</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E08.-.Live.mp4" aria-label="Season 3 Episode 8 — Live"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 8</span><h4 class="ep-title">Live</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E09.-.San.Jamar.mp4" aria-label="Season 3 Episode 9 — San Jamar"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 9</span><h4 class="ep-title">San Jamar</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E10.-.Daddy.s.Back.mp4" aria-label="Season 3 Episode 10 — Daddy's Back"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 10</span><h4 class="ep-title">Daddy’s Back</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E11.-.Cheesing.Two.Rolls.Again.mp4" aria-label="Season 3 Episode 11 — Cheesing Two Rolls Again"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 11</span><h4 class="ep-title">Cheesing Two Rolls Again</h4></div>
+            </article>
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/season-3/S03E12.-.Off.the.Rails.mp4" aria-label="Season 3 Episode 12 — Off the Rails"></video>
+              <div class="ep-meta"><span class="ep-num">Episode 12</span><h4 class="ep-title">Off the Rails 🛤</h4></div>
+            </article>
+          </div>
+        </div>
+
+        <!-- ===== Specials ===== -->
+        <div class="season-block">
+          <div class="season-head">
+            <h3>The <span>Specials</span></h3>
+            <p>One-offs from outside the seasons</p>
+          </div>
+          <div class="ep-grid">
+            <article class="ep-card">
+              <video controls preload="none" playsinline src="https://github.com/pool-tv/pool-tv.github.io/releases/download/specials/Special.-.The.Super.NARSASSISTIC.Halloween.Special.mp4" aria-label="Special — The Super NARSASSISTIC Halloween Special"></video>
+              <div class="ep-meta"><span class="ep-num">Special</span><h4 class="ep-title">The Super NARSASSISTIC Halloween Special 🎃</h4></div>
+            </article>
+            <article class="ep-card">
+              <div class="ep-lost"><b>Lost Episode</b><span>This one hasn’t been recovered yet — it’ll be plugged in here when it surfaces.</span></div>
+              <div class="ep-meta"><span class="ep-num">Special</span><h4 class="ep-title">Secret Episode 42</h4></div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
